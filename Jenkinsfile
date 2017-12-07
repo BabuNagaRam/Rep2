@@ -11,7 +11,6 @@ properties([
 node
 {
   
-  
 stage 'integrate'
 echo 'integrated'
 stage 'Test'
