@@ -5,26 +5,14 @@ properties([
     projectUrlStr: 'https://github.com/BabuNagaRam/Rep2.git/'],
     pipelineTriggers([githubPush()])])
 
-pipeline {
-    agent any 
-
-    stages {
-        stage('Build') { 
-            steps { 
-                sh 'pwd' 
-            }
-        }
-        stage('Test'){
-            steps {
-                sh 'java -version'
-                
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'ls'
-                sh 'pwd'
-            }
-        }
-    }
+node
+{
+  
+  
+stage 'integrate'
+echo 'integrated'
+stage 'Test'
+echo 'Tested'
+stage 'Deploy'
+echo 'Deployed'
 }
