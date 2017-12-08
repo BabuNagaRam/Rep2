@@ -1,21 +1,36 @@
+
 #!/usr/bin/env groovy
 properties([
-    [$class: 'GithubProjectProperty',
-    displayName: '',
-    projectUrlStr: 'https://github.com/BabuNagaRam/Rep2.git/'],
-    pipelineTriggers([upstream(
-   threshold: 'SUCCESS',
-   upstreamProjects: 'https://github.com/BabuNagaRam/Rep1.git/'
-   )])])
+   [$class: 'GithubProjectProperty',
+   displayName: '',
+   projectUrlStr: 'https://github.com/BabuNagaRam/Rep2/'],
+    pipelineTriggers([
+   
+   upstream(
+     threshold: 'SUCCESS',
+     upstreamProjects: 'https://github.com/BabuNagaRam/Rep1/.git')
+   ])
+])
+   pipeline {
+   agent any 
 
-pipeline
-{
-stage 'integrate'
-echo 'integrated'
-stage 'Test'
-echo 'Tested'
-stage 'Deploy'
-echo 'Deployed'
+   stages {
+       stage('Build') {
+           steps {
+               sh 'pwd'
+           }
+       }
+       stage('Test'){
+           steps {
+               sh 'java -version'
+               
+           }
+       }
+       stage('Deploy') {
+           steps {
+               sh 'ls'
+               sh 'pwd'
+           }
+       }
+   }
 }
-
-
